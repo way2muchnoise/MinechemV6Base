@@ -12,7 +12,7 @@ public enum RadioactivityEnum
     extremelyRadioactive("Extremely Radioactive", 0, 16),
     invalid("Invalid", 0, 0);
 
-    public static final RadioactivityEnum[] VALID_RADIATION = {stable, hardlyRadioactive, slightlyRadioactive, radioactive,
+    public static final RadioactivityEnum[] RADIOACTIVE = {hardlyRadioactive, slightlyRadioactive, radioactive,
             highlyRadioactive, extremelyRadioactive};
 
     private String name;
@@ -29,7 +29,7 @@ public enum RadioactivityEnum
     public static RadioactivityEnum getRadioactivity(int halfLife)
     {
         if (halfLife == -1) return stable;
-        for (RadioactivityEnum value : VALID_RADIATION)
+        for (RadioactivityEnum value : RADIOACTIVE)
         {
             if (!(halfLife < value.getHalfLife())) return value;
         }
@@ -40,4 +40,6 @@ public enum RadioactivityEnum
     {
         return halfLife;
     }
+
+    public int getDamage(){ return damage;}
 }

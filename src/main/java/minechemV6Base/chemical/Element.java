@@ -4,6 +4,9 @@ import minechemV6Base.chemical.properties.RadioactivityEnum;
 import minechemV6Base.chemical.properties.StateEnum;
 import net.minecraft.nbt.NBTTagCompound;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class Element extends ChemicalBase
 {
     private String symbol;
@@ -48,5 +51,10 @@ public class Element extends ChemicalBase
     public String getFormula()
     {
         return symbol;
+    }
+
+    public static Map.Entry<Element, Integer> create(Element element, int amount)
+    {
+        return new LinkedHashMap.SimpleEntry<Element, Integer>(element, amount);
     }
 }

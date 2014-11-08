@@ -1,4 +1,4 @@
-package projektor;
+package minechemV6Base;
 
 
 import cpw.mods.fml.common.Mod;
@@ -7,17 +7,17 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import projektor.proxy.CommonProxy;
-import projektor.reference.MetaData;
-import projektor.reference.Reference;
-import projektor.utils.LogHelper;
+import minechemV6Base.proxy.CommonProxy;
+import minechemV6Base.reference.MetaData;
+import minechemV6Base.reference.Reference;
+import minechemV6Base.utils.LogHelper;
 
 @Mod(modid = Reference.ID, name = Reference.NAME, version = Reference.VERSION_FULL, acceptedMinecraftVersions = "[1.7.10,)", dependencies = "required-after:Forge@[10.13.0.1180,)")
-public class Projektor
+public class MinechemV6Base
 {
     // Instancing
     @Mod.Instance(value = Reference.ID)
-    public static Projektor INSTANCE;
+    public static MinechemV6Base INSTANCE;
 
     // Public extra data about our mod that Forge uses in the mods listing page for more information.
     @Mod.Metadata(Reference.ID)

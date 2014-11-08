@@ -1,8 +1,8 @@
-package projektor.utils;
+package minechemV6Base.utils;
 
 import cpw.mods.fml.common.FMLLog;
+import minechemV6Base.reference.Reference;
 import org.apache.logging.log4j.Level;
-import projektor.reference.Reference;
 
 /**
  * Helper class for logging

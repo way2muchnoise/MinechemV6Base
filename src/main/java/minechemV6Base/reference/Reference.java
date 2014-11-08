@@ -1,9 +1,9 @@
-package projektor.reference;
+package minechemV6Base.reference;
 
 public class Reference
 {
     public static final String ID = "projektor";
-    public static final String NAME = "Projektor";
+    public static final String NAME = "MinechemV6Base";
 
     // Main version information that will be displayed in mod listing and for other purposes.
     public static final String V_MAJOR = "@MAJOR@";

@@ -1,4 +1,4 @@
-package projektor.proxy;
+package minechemV6Base.proxy;
 
 public class CommonProxy
 {

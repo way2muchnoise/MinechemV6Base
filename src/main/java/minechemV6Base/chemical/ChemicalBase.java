@@ -5,6 +5,7 @@ import minechemV6Base.chemical.properties.IState;
 import minechemV6Base.chemical.properties.RadioactivityEnum;
 import minechemV6Base.chemical.properties.StateEnum;
 import minechemV6Base.process.ProcessType;
+import net.minecraft.nbt.NBTTagCompound;
 
 import java.util.ArrayList;
 
@@ -82,5 +83,28 @@ public abstract class ChemicalBase implements IChemical, IState, IRadioactive
     public long getHalfLife()
     {
         return this.radioactivity.getHalfLife();
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    {
+        compound.setString("minechemKey", Jenkins.getKey(this));
+        return compound;
+    }
+
+    /**
+     * Creates a ChemicalBase object from NBTData
+     *
+     * @param compound
+     * @return A chemical
+     */
+    public static ChemicalBase createChemicalFromNBT(NBTTagCompound compound)
+    {
+        ChemicalBase chemicalBase = null;
+        if (compound.hasKey("minechemKey"))
+        {
+            chemicalBase = Jenkins.find(compound.getString("minechemKey"));
+        }
+        return chemicalBase;
     }
 }

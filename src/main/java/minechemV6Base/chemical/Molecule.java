@@ -2,7 +2,6 @@ package minechemV6Base.chemical;
 
 import minechemV6Base.chemical.properties.RadioactivityEnum;
 import minechemV6Base.chemical.properties.StateEnum;
-import net.minecraft.nbt.NBTTagCompound;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -42,18 +41,6 @@ public class Molecule extends ChemicalBase
         {
             this.structure.put(entry.getKey(), entry.getValue());
         }
-    }
-
-    @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
-    {
-        return compound;
-    }
-
-    @Override
-    public Molecule readFromNBT(NBTTagCompound compound)
-    {
-        return null;
     }
 
     @Override

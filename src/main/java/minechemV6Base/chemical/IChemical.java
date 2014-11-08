@@ -16,8 +16,6 @@ public interface IChemical
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound);
 
-    public IChemical readFromNBT(NBTTagCompound compound);
-
     public String getFormula();
 
     public String getName();

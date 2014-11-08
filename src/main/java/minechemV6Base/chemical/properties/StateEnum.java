@@ -1,6 +1,7 @@
 package minechemV6Base.chemical.properties;
 
-public enum StateEnum {
+public enum StateEnum
+{
     solid("Solid"),
     liquid("Liquid"),
     gas("Gas"),
@@ -8,7 +9,8 @@ public enum StateEnum {
 
     private String name;
 
-    StateEnum(String name){
+    StateEnum(String name)
+    {
         this.name = name;
     }
 

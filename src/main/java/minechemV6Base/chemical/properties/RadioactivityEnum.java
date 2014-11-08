@@ -4,7 +4,7 @@ import minechemV6Base.utils.Constants;
 
 public enum RadioactivityEnum
 {
-    stable("Stable", Long.MAX_VALUE, 0),
+    stable("Stable", -1, 0),
     hardlyRadioactive("Hardly Radioactive", Constants.TICKS_PER_DAY, 1),
     slightlyRadioactive("Slightly Radioactive", Constants.TICKS_PER_HOUR * 12, 2),
     radioactive("Radioactive", Constants.TICKS_PER_HOUR * 6, 6),

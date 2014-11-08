@@ -1,6 +1,5 @@
 package minechemV6Base.chemical;
 
-import minechemV6Base.chemical.properties.RadioactivityEnum;
 import minechemV6Base.chemical.properties.StateEnum;
 
 import java.util.HashMap;
@@ -29,9 +28,9 @@ public class Molecule extends ChemicalBase
         initStructure(structure);
     }
 
-    public Molecule(String name, int temp, RadioactivityEnum radioactivity, Map.Entry<ChemicalBase, Integer>... structure)
+    public Molecule(String name, int temp, Long halfLife, Map.Entry<ChemicalBase, Integer>... structure)
     {
-        super(name, temp, radioactivity);
+        super(name, temp, halfLife);
         initStructure(structure);
     }
 
@@ -58,6 +57,13 @@ public class Molecule extends ChemicalBase
         return formula;
     }
 
+    /**
+     * Creates a Entry to us in constructing a {@link Molecule}
+     *
+     * @param molecule
+     * @param amount
+     * @return
+     */
     public static Map.Entry<Molecule, Integer> create(Molecule molecule, int amount)
     {
         return new LinkedHashMap.SimpleEntry<Molecule, Integer>(molecule, amount);

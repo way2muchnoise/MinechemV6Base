@@ -2,7 +2,6 @@ package minechemV6Base.chemical;
 
 import minechemV6Base.chemical.properties.IRadioactive;
 import minechemV6Base.chemical.properties.IState;
-import minechemV6Base.chemical.properties.RadioactivityEnum;
 import minechemV6Base.chemical.properties.StateEnum;
 import minechemV6Base.process.ProcessType;
 import net.minecraft.nbt.NBTTagCompound;
@@ -13,7 +12,7 @@ public abstract class ChemicalBase implements IChemical, IState, IRadioactive
 {
     protected int temp, mass;
     protected StateEnum state;
-    protected RadioactivityEnum radioactivity;
+    protected Long halfLife;
     protected String name;
 
     public ChemicalBase(String name)
@@ -21,7 +20,7 @@ public abstract class ChemicalBase implements IChemical, IState, IRadioactive
         this.name = name;
         this.temp = 0;
         this.state = StateEnum.solid;
-        this.radioactivity = RadioactivityEnum.stable;
+        this.halfLife = -1L;
     }
 
     public ChemicalBase(String name, int temp)
@@ -36,10 +35,10 @@ public abstract class ChemicalBase implements IChemical, IState, IRadioactive
         this.state = state;
     }
 
-    public ChemicalBase(String name, int temp, RadioactivityEnum radioactivity)
+    public ChemicalBase(String name, int temp, Long halfLife)
     {
         this(name, temp);
-        this.radioactivity = radioactivity;
+        this.halfLife = halfLife;
     }
 
     @Override
@@ -82,7 +81,7 @@ public abstract class ChemicalBase implements IChemical, IState, IRadioactive
     @Override
     public long getHalfLife()
     {
-        return this.radioactivity.getHalfLife();
+        return this.halfLife;
     }
 
     @Override

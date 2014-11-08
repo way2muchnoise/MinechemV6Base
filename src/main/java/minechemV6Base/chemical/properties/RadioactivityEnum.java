@@ -28,6 +28,7 @@ public enum RadioactivityEnum
 
     public static RadioactivityEnum getRadioactivity(int halfLife)
     {
+        if (halfLife == -1) return stable;
         for (RadioactivityEnum value : VALID_RADIATION)
         {
             if (!(halfLife < value.getHalfLife())) return value;

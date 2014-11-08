@@ -1,66 +1,46 @@
 package minechemV6Base.chemical;
 
-import minechemV6Base.chemical.properties.IRadioactive;
-import minechemV6Base.chemical.properties.IState;
+import minechemV6Base.chemical.properties.RadioactivityEnum;
 import minechemV6Base.chemical.properties.StateEnum;
-import minechemV6Base.process.ProcessType;
 import net.minecraft.nbt.NBTTagCompound;
 
-import java.util.ArrayList;
-
-public class Molecule implements IChemical, IState, IRadioactive
+public class Molecule extends ChemicalBase
 {
-    @Override
-    public ArrayList<IChemical> getOutput(ProcessType type, int level)
+    public Molecule(String name, Element... elements)
     {
-        return null;
+        super(name);
     }
 
-    @Override
-    public int getMass()
+    public Molecule(String name, int temp, Element... elements)
     {
-        return 0;
+        super(name, temp);
     }
 
-    @Override
-    public boolean isElement()
+    public Molecule(String name, int temp, StateEnum state, Element... elements)
     {
-        return false;
+        super(name, temp, state);
     }
 
-    @Override
-    public void setTemperature()
+    public Molecule(String name, int temp, RadioactivityEnum radioactivity, Element... elements)
     {
-
-    }
-
-    @Override
-    public StateEnum getState()
-    {
-        return null;
-    }
-
-    @Override
-    public StateEnum getState(int temperature)
-    {
-        return null;
+        super(name, temp, radioactivity);
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
-        return null;
+        return compound;
     }
 
     @Override
-    public IChemical readFromNBT(NBTTagCompound compound)
+    public Molecule readFromNBT(NBTTagCompound compound)
     {
         return null;
     }
 
     @Override
-    public long getHalfLife()
+    public String getFormula()
     {
-        return 0;
+        return null;
     }
 }

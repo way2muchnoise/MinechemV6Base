@@ -12,11 +12,13 @@ public interface IChemical
 
     public int getMass();
 
-    public boolean isElement();
-
     public StateEnum getState(int temperature);
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound);
 
     public IChemical readFromNBT(NBTTagCompound compound);
+
+    public String getFormula();
+
+    public String getName();
 }

@@ -23,7 +23,7 @@ public class MinechemV6Base
     @Mod.Metadata(Reference.ID)
     public static ModMetadata metadata;
 
-    @SidedProxy(clientSide = "projektor.proxy.ClientProxy", serverSide = "projektor.proxy.CommonProxy")
+    @SidedProxy(clientSide = "minechemV6Base.proxy.ClientProxy", serverSide = "minechemV6Base.proxy.CommonProxy")
     public static CommonProxy PROXY;
 
     @Mod.EventHandler

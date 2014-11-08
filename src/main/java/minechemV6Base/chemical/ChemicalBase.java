@@ -18,7 +18,7 @@ public abstract class ChemicalBase implements IChemical, IState, IRadioactive
     public ChemicalBase(String name)
     {
         this.name = name;
-        this.temp = 0;
+        this.temp = 293;
         this.state = StateEnum.solid;
         this.halfLife = -1L;
     }

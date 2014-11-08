@@ -68,4 +68,10 @@ public class Molecule extends ChemicalBase
     {
         return new LinkedHashMap.SimpleEntry<Molecule, Integer>(molecule, amount);
     }
+
+    @Override
+    public boolean isElement()
+    {
+        return false;
+    }
 }

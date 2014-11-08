@@ -26,7 +26,7 @@ public enum RadioactivityEnum
         this.damage = damage;
     }
 
-    public static RadioactivityEnum getRadioactivity(int halfLife)
+    public static RadioactivityEnum getRadioactivity(long halfLife)
     {
         if (halfLife == -1) return stable;
         for (RadioactivityEnum value : RADIOACTIVE)

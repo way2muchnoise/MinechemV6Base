@@ -50,4 +50,10 @@ public class Element extends ChemicalBase
     {
         return new LinkedHashMap.SimpleEntry<Element, Integer>(element, amount);
     }
+
+    @Override
+    public boolean isElement()
+    {
+        return true;
+    }
 }

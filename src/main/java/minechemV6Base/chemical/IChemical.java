@@ -19,4 +19,6 @@ public interface IChemical
     public String getFormula();
 
     public String getName();
+
+    public boolean isElement();
 }

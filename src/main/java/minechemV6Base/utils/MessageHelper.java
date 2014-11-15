@@ -21,7 +21,7 @@ public class MessageHelper
         }
     }
 
-    public static ItemStack writeItemStack(ByteBuf buf)
+    public static ItemStack readItemStack(ByteBuf buf)
     {
         Item item = Item.getItemById(buf.readInt());
         int stackSize = buf.readInt();

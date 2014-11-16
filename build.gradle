@@ -35,9 +35,11 @@ repositories {
 	name = "forge"
 	url = "http://files.minecraftforge.net/maven"
     }
+    maven { url = "http://maven.cil.li/" }
 }
 
-dependencies {    
+dependencies {
+    compile "li.cil.oc:OpenComputers:MC1.7.10-1.4.+:api"
 	compile fileTree(dir: 'lib', include: '*.jar')
 }
 

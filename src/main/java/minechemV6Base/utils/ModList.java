@@ -1,22 +1,30 @@
 package minechemV6Base.utils;
 
 import cpw.mods.fml.common.Loader;
+import minechemV6Base.compatibility.CompatBase;
+import minechemV6Base.compatibility.computercraft.ComputerCraftCompat;
 import minechemV6Base.reference.Reference;
 
 public enum ModList
 {
     cofhcore("CoFHCore"),
-    minecraft("minecraft"),
-    computercraft(Reference.COMPUTERCRAFT),
+    computercraft(Reference.COMPUTERCRAFT, ComputerCraftCompat.class),
     opencomputers(Reference.OPENCOMPUTERS);
 
     private String id;
-    private Boolean isLoaded = null;
-
+    private Class compatClass = null;
+    private boolean isLoaded;
 
     ModList(String name)
     {
+        this(name,null);
+    }
+
+    ModList(String name, Class compatClass)
+    {
         this.id = name;
+        this.compatClass = compatClass;
+        isLoaded = Loader.isModLoaded(this.id);
     }
 
     @Override
@@ -27,7 +35,16 @@ public enum ModList
 
     public boolean isLoaded()
     {
-        if (isLoaded!=null) return isLoaded;
-        return isLoaded = Loader.isModLoaded(this.id);
+        return isLoaded;
+    }
+
+    public CompatBase initialize()
+    {
+        if (!isLoaded || compatClass == null) return null;
+        try {
+            return (CompatBase) compatClass.getConstructor(ModList.class).newInstance(this);
+        } catch (Exception e) {
+        }
+        return null;
     }
 }

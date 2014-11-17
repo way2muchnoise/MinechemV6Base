@@ -4,6 +4,11 @@ import minechemV6Base.utils.ModList;
 
 public class CompatBase
 {
+    public static void register()
+    {
+        for (ModList value:ModList.values())
+            value.initialize();
+    }
 
     public CompatBase(ModList modlist)
     {

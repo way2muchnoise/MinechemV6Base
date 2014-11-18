@@ -1,13 +1,27 @@
 package minechemV6Base.utils;
 
 
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.*;
+import net.minecraft.world.World;
 
 public class MessageHelper
 {
+    public static World getWorldBySide(Side side)
+    {
+        World world;
+        if (side == Side.CLIENT)
+            world = FMLClientHandler.instance().getClient().theWorld;
+        else
+            world = FMLCommonHandler.instance().getMinecraftServerInstance().getEntityWorld();
+        return world;
+    }
+
     public static void writeItemStack(ByteBuf buf, ItemStack itemStack)
     {
         buf.writeInt(Item.getIdFromItem(itemStack.getItem()));

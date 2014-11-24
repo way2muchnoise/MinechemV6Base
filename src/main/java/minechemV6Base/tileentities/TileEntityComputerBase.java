@@ -1,11 +1,6 @@
 package minechemV6Base.tileentities;
 
 
-import minechemV6Base.compatibility.lua.events.LuaEvent;
-import minechemV6Base.compatibility.lua.methods.LuaMethod;
-import minechemV6Base.reference.Reference;
-import minechemV6Base.utils.ModList;
-import minechemV6Base.utils.Timer;
 import cpw.mods.fml.common.Optional;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.lua.LuaException;
@@ -14,12 +9,12 @@ import dan200.computercraft.api.peripheral.IPeripheral;
 import li.cil.oc.api.Network;
 import li.cil.oc.api.machine.Arguments;
 import li.cil.oc.api.machine.Context;
-import li.cil.oc.api.network.Component;
-import li.cil.oc.api.network.Environment;
-import li.cil.oc.api.network.ManagedPeripheral;
-import li.cil.oc.api.network.Message;
-import li.cil.oc.api.network.Node;
-import li.cil.oc.api.network.Visibility;
+import li.cil.oc.api.network.*;
+import minechemV6Base.compatibility.lua.events.LuaEvent;
+import minechemV6Base.compatibility.lua.methods.LuaMethod;
+import minechemV6Base.reference.Reference;
+import minechemV6Base.utils.ModList;
+import minechemV6Base.utils.Timer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -35,7 +30,7 @@ import java.util.Set;
         @Optional.Interface(iface = "li.cil.oc.api.network.Environment", modid = Reference.OPENCOMPUTERS),
         @Optional.Interface(iface = "li.cil.oc.api.network.ManagedPeripheral", modid = Reference.OPENCOMPUTERS)
         })
-public abstract class ComputerBaseTE extends TileEntity implements ManagedPeripheral, Environment, IPeripheral
+public abstract class TileEntityComputerBase extends TileEntity implements ManagedPeripheral, Environment, IPeripheral
 {
     protected final String name;
     protected final Map<Integer, String> methodIDs = new LinkedHashMap<Integer, String>();
@@ -47,7 +42,7 @@ public abstract class ComputerBaseTE extends TileEntity implements ManagedPeriph
     private Set<Object> context = new LinkedHashSet<Object>();
     private final Object node = ModList.opencomputers.isLoaded()? this.createNode() : null;
 
-    public ComputerBaseTE(String name)
+    public TileEntityComputerBase(String name)
     {
         this.name = name;
     }

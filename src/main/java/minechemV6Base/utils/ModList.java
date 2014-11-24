@@ -8,11 +8,11 @@ import minechemV6Base.reference.Reference;
 public enum ModList
 {
     cofhcore("CoFHCore"),
-    computercraft(Reference.COMPUTERCRAFT, ComputerCraftCompat.class),
+    computercraft(Reference.COMPUTERCRAFT, new ComputerCraftCompat()),
     opencomputers(Reference.OPENCOMPUTERS);
 
     private String id;
-    private Class compatClass = null;
+    private CompatBase compat;
     private boolean isLoaded;
 
     ModList(String name)
@@ -20,10 +20,10 @@ public enum ModList
         this(name,null);
     }
 
-    ModList(String name, Class compatClass)
+    ModList(String name, CompatBase compatBase)
     {
         this.id = name;
-        this.compatClass = compatClass;
+        this.compat = compatBase;
         isLoaded = Loader.isModLoaded(this.id);
     }
 
@@ -38,13 +38,13 @@ public enum ModList
         return isLoaded;
     }
 
-    public CompatBase initialize()
+    public boolean initialize()
     {
-        if (!isLoaded || compatClass == null) return null;
+        if (!isLoaded || compat == null) return false;
         try {
-            return (CompatBase) compatClass.getConstructor(ModList.class).newInstance(this);
+            return compat.initialise(this);
         } catch (Exception e) {
         }
-        return null;
+        return false;
     }
 }

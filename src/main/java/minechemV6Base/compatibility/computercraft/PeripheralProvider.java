@@ -5,7 +5,7 @@ import dan200.computercraft.api.ComputerCraftAPI;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.api.peripheral.IPeripheralProvider;
 import minechemV6Base.reference.Reference;
-import minechemV6Base.tileentities.ComputerBaseTE;
+import minechemV6Base.tileentities.TileEntityComputerBase;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
@@ -22,7 +22,7 @@ public class PeripheralProvider implements IPeripheralProvider
     public IPeripheral getPeripheral(World world, int x, int y, int z, int side)
     {
         TileEntity te = world.getTileEntity(x, y, z);
-        if (te instanceof ComputerBaseTE)
+        if (te instanceof TileEntityComputerBase)
         {
             return (IPeripheral) te;
         }

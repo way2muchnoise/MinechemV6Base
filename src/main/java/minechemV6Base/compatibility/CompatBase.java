@@ -10,10 +10,13 @@ public class CompatBase
             value.initialize();
     }
 
-    public CompatBase(ModList modlist)
+    public boolean initialise(ModList modlist)
     {
-        if (modlist.isLoaded())
+        if (modlist.isLoaded()) {
             init();
+            return true;
+        }
+        return false;
     }
 
     public void init()

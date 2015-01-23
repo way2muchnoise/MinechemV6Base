@@ -114,7 +114,13 @@ public abstract class ChemicalBase implements IChemical, IState, IRadioactive
     @Override
     public StateEnum getState(int temperature)
     {
-        return this.state;
+        if (temperature>=boilingPoint){
+        	return StateEnum.gas;
+        }else if (temperature>=meltingPoint){
+        	return StateEnum.liquid;
+        }else{
+        	return StateEnum.solid;
+        }
     }
 
     @Override

@@ -11,6 +11,7 @@ import minechemV6Base.proxy.CommonProxy;
 import minechemV6Base.reference.MetaData;
 import minechemV6Base.reference.Reference;
 import minechemV6Base.utils.LogHelper;
+import minechemV6Base.utils.StringParser;
 
 @Mod(modid = Reference.ID, name = Reference.NAME, version = Reference.VERSION_FULL, acceptedMinecraftVersions = "[1.7.10,)", dependencies = "required-after:Forge@[10.13.0.1180,)")
 public class MinechemV6Base
@@ -33,6 +34,11 @@ public class MinechemV6Base
 
         LogHelper.info("Setting up metaData...");
         metadata = MetaData.init(metadata);
+        //StringParser.getValenceShell(8);
+        StringParser.getValenceShell(150);
+        StringParser.getValenceShell(160);
+        StringParser.getValenceShell(170);
+
     }
 
     @Mod.EventHandler

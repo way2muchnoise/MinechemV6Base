@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public abstract class ChemicalBase implements IChemical, IState, IRadioactive
 {
     protected int temp, mass, meltingPoint, boilingPoint;
-    protected StateEnum state;
     protected Long halfLife;
     protected String name;
     protected RadioactivityEnum radioactivity;
@@ -21,7 +20,6 @@ public abstract class ChemicalBase implements IChemical, IState, IRadioactive
     {
         this.name = name;
         this.temp = 293;
-        this.state = StateEnum.solid;
         this.halfLife = -1L;
     }
 
@@ -30,16 +28,17 @@ public abstract class ChemicalBase implements IChemical, IState, IRadioactive
         this(name);
         this.temp = temp;
     }
-
-    public ChemicalBase(String name, int temp, StateEnum state)
+    
+    public ChemicalBase(String name, int temp, int meltingPoint, int boilingPoint)
     {
-        this(name, temp);
-        this.state = state;
+        this(name,temp);
+        this.meltingPoint=meltingPoint;
+        this.boilingPoint=boilingPoint;
     }
 
-    public ChemicalBase(String name, int temp, Long halfLife)
+    public ChemicalBase(String name, int temp, int meltingPoint, int boilingPoint, Long halfLife)
     {
-        this(name, temp);
+        this(name, temp, meltingPoint, boilingPoint);
         this.halfLife = halfLife;
         this.radioactivity = RadioactivityEnum.getRadioactivity(this.halfLife);
     }
@@ -108,7 +107,7 @@ public abstract class ChemicalBase implements IChemical, IState, IRadioactive
     @Override
     public StateEnum getState()
     {
-        return this.state;
+        return getState(temp);
     }
 
     @Override

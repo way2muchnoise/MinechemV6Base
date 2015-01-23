@@ -21,8 +21,8 @@ public abstract class ChemicalBase implements IChemical, IState, IRadioactive
         this.name = name;
         this.temp = 293;
         this.halfLife = -1L;
-        this.meltingPoint = 500;
-        this.boilingPoint = 1000; // don't ask me where the values are from
+        this.meltingPoint = 0;
+        this.boilingPoint = 1000; // don't ask me where the values are from at all
     }
 
     public ChemicalBase(String name, int temp)

@@ -1,7 +1,5 @@
 package minechemV6Base.chemical;
 
-import minechemV6Base.chemical.properties.StateEnum;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -21,15 +19,15 @@ public class Element extends ChemicalBase
         this.symbol = symbol;
     }
 
-    public Element(String name, int temp, StateEnum state, String symbol)
+    public Element(String name, int temp, int meltingPoint, int boilingPoint, String symbol)
     {
-        super(name, temp, state);
+        super(name, temp, meltingPoint, boilingPoint);
         this.symbol = symbol;
     }
 
-    public Element(String name, int temp, Long halfLife, String symbol)
+    public Element(String name, int temp, int meltingPoint, int boilingPoint, Long halfLife, String symbol)
     {
-        super(name, temp, halfLife);
+        super(name, temp, meltingPoint, boilingPoint, halfLife);
         this.symbol = symbol;
     }
 

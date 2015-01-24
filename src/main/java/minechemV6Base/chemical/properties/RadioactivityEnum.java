@@ -19,7 +19,7 @@ public enum RadioactivityEnum
     private long halfLife;
     private int damage;
 
-    RadioactivityEnum(String name, long halfLife, int damage)
+	RadioactivityEnum(String name, long halfLife, int damage)
     {
         this.name = name;
         this.halfLife = halfLife;
@@ -42,4 +42,8 @@ public enum RadioactivityEnum
     }
 
     public int getDamage(){ return damage;}
+    
+    public String getName() {
+		return name;
+	}
 }

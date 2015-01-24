@@ -59,8 +59,8 @@ dependencies {
     compile fileTree(dir: 'libs', include: '*.zip')
 }
 
-group = "minechem"
-archivesBaseName = "Minechem"
+group = "minechemV6Base"
+archivesBaseName = "MinechemV6Base"
 
 minecraft {
     version = "${config.version.minecraft}-${config.version.forge}"
@@ -151,7 +151,7 @@ task getLibraries {
 task apiZip(type: Zip) {
     classifier = 'api'
     from sourceSets*.allSource
-    include 'minechem/api/**'
+    include 'projektor/api/**'
     destinationDir = file 'output'
 }
 

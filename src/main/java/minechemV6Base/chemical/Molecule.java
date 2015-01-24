@@ -1,7 +1,5 @@
 package minechemV6Base.chemical;
 
-import minechemV6Base.chemical.properties.StateEnum;
-
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -22,15 +20,15 @@ public class Molecule extends ChemicalBase
         initStructure(structure);
     }
 
-    public Molecule(String name, int temp, StateEnum state, Map.Entry<ChemicalBase, Integer>... structure)
+    public Molecule(String name, int temp, int meltingPoint, int boilingPoint, Map.Entry<ChemicalBase, Integer>... structure)
     {
-        super(name, temp, state);
+        super(name, temp, meltingPoint, boilingPoint);
         initStructure(structure);
     }
 
-    public Molecule(String name, int temp, Long halfLife, Map.Entry<ChemicalBase, Integer>... structure)
+    public Molecule(String name, int temp, int meltingPoint, int boilingPoint, Long halfLife, Map.Entry<ChemicalBase, Integer>... structure)
     {
-        super(name, temp, halfLife);
+        super(name, temp, meltingPoint, boilingPoint, halfLife);
         initStructure(structure);
     }
 

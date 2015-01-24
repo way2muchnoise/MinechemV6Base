@@ -36,6 +36,7 @@ lib/1.6.4/
 ## ForgeGradle
 /run
 /out
+/libs
 
 ## idea
 /.idea

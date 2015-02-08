@@ -1,70 +1,71 @@
 package minechemV6Base.chemical;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.LinkedList;
 
 public class Molecule extends ChemicalBase
 {
-    private HashMap<ChemicalBase, Integer> structure = new LinkedHashMap<ChemicalBase, Integer>();
+    public static class ChemicalBaseSet
+    {
+        public ChemicalBase chemical;
+        public int count;
+        
+        public ChemicalBaseSet(ChemicalBase chemical)
+        {
+            this(chemical, 1);
+        }
+        
+        public ChemicalBaseSet(ChemicalBase chemical, int count)
+        {
+            this.chemical = chemical;
+            this.count = count;
+        }
+    }
+    
+    private LinkedList<ChemicalBaseSet> structure = new LinkedList<ChemicalBaseSet>();
 
-    public Molecule(String name, Map.Entry<ChemicalBase, Integer>... structure)
+    public Molecule(String name, ChemicalBaseSet... structure)
     {
         super(name);
         initStructure(structure);
     }
 
-    public Molecule(String name, int temp, Map.Entry<ChemicalBase, Integer>... structure)
+    public Molecule(String name, int temp, ChemicalBaseSet... structure)
     {
         super(name, temp);
         initStructure(structure);
     }
 
-    public Molecule(String name, int temp, int meltingPoint, int boilingPoint, Map.Entry<ChemicalBase, Integer>... structure)
+    public Molecule(String name, int temp, int meltingPoint, int boilingPoint, ChemicalBaseSet... structure)
     {
         super(name, temp, meltingPoint, boilingPoint);
         initStructure(structure);
     }
 
-    public Molecule(String name, int temp, int meltingPoint, int boilingPoint, Long halfLife, Map.Entry<ChemicalBase, Integer>... structure)
+    public Molecule(String name, int temp, int meltingPoint, int boilingPoint, Long halfLife, ChemicalBaseSet... structure)
     {
         super(name, temp, meltingPoint, boilingPoint, halfLife);
         initStructure(structure);
     }
 
-    private void initStructure(Map.Entry<ChemicalBase, Integer>... structure)
+    private void initStructure(ChemicalBaseSet... structure)
     {
-        for (Map.Entry<ChemicalBase, Integer> entry : structure)
-        {
-            this.structure.put(entry.getKey(), entry.getValue());
-        }
+        this.structure.addAll(Arrays.asList(structure));
     }
 
     @Override
     public String getFormula()
     {
         String formula = "";
-        for (Map.Entry<ChemicalBase, Integer> entry : structure.entrySet())
+        for (ChemicalBaseSet chemicalBaseSet : structure)
         {
-            boolean molecule = entry.getKey() instanceof Molecule;
+            boolean molecule = chemicalBaseSet.chemical instanceof Molecule;
             if (molecule) formula += "(";
-            formula += entry.getKey().getFormula();
+            formula += chemicalBaseSet.chemical.getFormula();
             if (molecule) formula += ")";
-            formula += entry.getValue();
+            formula += chemicalBaseSet.count;
         }
         return formula;
-    }
-
-    /**
-     * Creates a Entry to us in constructing a {@link Molecule}
-     *
-     * @param molecule
-     * @param amount
-     * @return
-     */
-    public static Map.Entry<Molecule, Integer> create(Molecule molecule, int amount)
-    {
-        return new LinkedHashMap.SimpleEntry<Molecule, Integer>(molecule, amount);
     }
 
     @Override

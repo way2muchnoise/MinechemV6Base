@@ -2,9 +2,12 @@ package minechemV6Base.utils;
 
 import minechemV6Base.chemical.ChemicalBase;
 import minechemV6Base.chemical.Element;
+import minechemV6Base.chemical.Jenkins;
 import minechemV6Base.chemical.Molecule;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,20 +27,20 @@ public class StringParser
     public static Molecule parseMolecule(String formula)
     {
         if (isNull(formula)) return null;
-        Map<ChemicalBase,Integer> molecules = new HashMap<ChemicalBase, Integer>();
+        List<Molecule.ChemicalBaseSet> structure = new LinkedList<Molecule.ChemicalBaseSet>();
         Matcher matcher = molecule.matcher(formula);
         while (matcher.find())
         {
             int multiplier = toInteger(matcher.group(5));
             Element element = toElement(matcher.group(2));
-            if (put(molecules,element,multiplier))continue;
+            if (put(structure,element,multiplier))continue;
             Molecule chemMolecule = parseMolecule(matcher.group(3));
-            if (put(molecules,chemMolecule,multiplier))continue;
+            if (put(structure,chemMolecule,multiplier))continue;
             Molecule definedMolecule = toMolecule(matcher.group(4));
-            if (put(molecules,definedMolecule,multiplier))continue;
+            if (put(structure,definedMolecule,multiplier))continue;
             throw new NullPointerException("Error parsing "+formula);
         }
-        return new Molecule(null, (Map.Entry<ChemicalBase,Integer>[])molecules.entrySet().toArray());
+        return new Molecule(null, structure.toArray(new Molecule.ChemicalBaseSet[structure.size()]));
     }
 
     public static final Matcher shells = Pattern.compile("(\\d+)([spdfg])").matcher("1s2s2p3s3p4s3d4p5s4d5p6s4f5d6p7s5f6d7p8s5g6f7d8p9s"); //Handles up to atomic number 170
@@ -56,13 +59,12 @@ public class StringParser
         }
         int valenceElectron = subshellElectrons[subShell] + electronCount;
         String valenceShellString = shells.group(0)+valenceElectron;
-        return;
     }
 
-    public static boolean put(Map<ChemicalBase, Integer> map, ChemicalBase chemical, int multiplier)
+    public static boolean put(List<Molecule.ChemicalBaseSet> structure, ChemicalBase chemical, int multiplier)
     {
         if (chemical==null) return false;
-        map.put(chemical,multiplier);
+        structure.add(new Molecule.ChemicalBaseSet(chemical, multiplier));
         return true;
     }
 
@@ -74,12 +76,12 @@ public class StringParser
 
     public static Element toElement(String string)
     {
-        return null;
+        return (Element)Jenkins.find(string);
     }
 
     public static Molecule toMolecule(String string)
     {
-        return null;
+        return (Molecule)Jenkins.find(string);
     }
 
     public static boolean isNull(String string)

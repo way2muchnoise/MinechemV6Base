@@ -1,8 +1,5 @@
 package minechemV6Base.chemical;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 public class Element extends ChemicalBase
 {
     private String symbol;
@@ -35,18 +32,6 @@ public class Element extends ChemicalBase
     public String getFormula()
     {
         return symbol;
-    }
-
-    /**
-     * Creates an Entry to us in constructing a {@link Molecule}
-     *
-     * @param element
-     * @param amount
-     * @return
-     */
-    public static Map.Entry<Element, Integer> create(Element element, int amount)
-    {
-        return new LinkedHashMap.SimpleEntry<Element, Integer>(element, amount);
     }
 
     @Override

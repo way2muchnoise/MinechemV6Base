@@ -9,6 +9,12 @@ public class ChemicalProcess
     private int level;
     private ChemicalBase[] output;
 
+    /**
+     *
+     * @param type
+     * @param level
+     * @param components
+     */
     public ChemicalProcess(ChemicalProcessType type, int level, ChemicalBase... components)
     {
         this.type = type;

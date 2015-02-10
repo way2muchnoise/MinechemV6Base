@@ -1,38 +1,24 @@
 package minechemV6Base.process;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-
-public class ChemicalProcessType
+public class ChemicalProcessType implements Comparable<ChemicalProcessType>
 {
-    public static HashMap<ChemicalProcessType,String> processTypes = new LinkedHashMap<ChemicalProcessType,String>();
-    public static HashMap<String,ChemicalProcessType> processNames = new LinkedHashMap<String,ChemicalProcessType>();
+    public static final ChemicalProcessType heat = ChemicalProcessRegistry.getInstance().addProcess("heat");
+    public static final ChemicalProcessType acid = ChemicalProcessRegistry.getInstance().addProcess("acid");
+    public static final ChemicalProcessType friction = ChemicalProcessRegistry.getInstance().addProcess("friction");
+    public static final ChemicalProcessType electrolysis = ChemicalProcessRegistry.getInstance().addProcess("electrolysis");
+    
+    public static final ChemicalProcessType heatFriction = ChemicalProcessRegistry.getInstance().addProcess(heat, friction);
 
-    public static final ChemicalProcessType heat = addProcess("heat");
-    public static final ChemicalProcessType acid = addProcess("acid");
-    public static final ChemicalProcessType friction = addProcess("friction");
-    public static final ChemicalProcessType electrolysis = addProcess("electroylysis");
-
-    private String name;
+    protected String name;
 
     public ChemicalProcessType(String name)
     {
-        this.name=name;
+        this.name = name;
     }
-
-    public static ChemicalProcessType addProcess(String name)
+    
+    public String getName()
     {
-        if (name!=null)
-        {
-            ChemicalProcessType result = new ChemicalProcessType(name);
-            if (processTypes.get(result)==null && processNames.get(name)==null)
-            {
-                processTypes.put(result, name);
-                processNames.put(name, result);
-                return result;
-            }
-        }
-        return null;
+        return name;
     }
 
     @Override
@@ -41,8 +27,14 @@ public class ChemicalProcessType
         return name;
     }
 
-    public static ChemicalProcessType getProcess(String name)
+    /**
+     * Compare method to sort a list by name
+     * @param otherType
+     * @return
+     */
+    @Override
+    public int compareTo(ChemicalProcessType otherType)
     {
-        return processNames.get(name);
+        return this.name.compareTo(otherType.name);
     }
 }

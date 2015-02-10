@@ -18,7 +18,7 @@ public class ChemicalProcess
 
     public ChemicalBase[] getOutput(ChemicalProcessType type, int level)
     {
-        if (this.type == type && level>= this.level) return output;
+        if (this.type == type && level >= this.level) return output;
         return new ChemicalBase[0];
     }
 

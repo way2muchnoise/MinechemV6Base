@@ -7,7 +7,14 @@ import java.util.Random;
 public class ChemicalChanceProcess extends ChemicalProcess
 {
     private float chance;
-    
+
+    /**
+     * A process that has a chance to give output
+     * @param type the ChemicalProcessType
+     * @param level the level needed
+     * @param chance the chance in a float format min 0, max 1
+     * @param components the output
+     */
     public ChemicalChanceProcess(ChemicalProcessType type, int level, float chance, ChemicalBase... components)
     {
         super(type, level, components);

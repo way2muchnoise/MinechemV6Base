@@ -4,11 +4,17 @@ import minechemV6Base.chemical.ChemicalBase;
 
 import java.util.Random;
 
-public class ChemicalMultiChanceProcess extends ChemicalProcess
+public class ChemicalMultiProcess extends ChemicalProcess
 {
     private ChemicalBase[][] outputs;
-    
-    public ChemicalMultiChanceProcess(ChemicalProcessType type, int level, ChemicalBase[]... components)
+
+    /**
+     * Process that has different possible outputs, chance will be equally divided
+     * @param type the ChemicalProcessType
+     * @param level the level needed
+     * @param components arrays of possible outputs
+     */
+    public ChemicalMultiProcess(ChemicalProcessType type, int level, ChemicalBase[]... components)
     {
         super(type, level);
         outputs = components;

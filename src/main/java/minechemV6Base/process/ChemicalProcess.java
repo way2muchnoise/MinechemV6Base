@@ -10,10 +10,10 @@ public class ChemicalProcess
     private ChemicalBase[] output;
 
     /**
-     *
-     * @param type
-     * @param level
-     * @param components
+     * Create a process to bind to an ItemStack
+     * @param type the ChemicalProcessType
+     * @param level the level needed
+     * @param components the output components
      */
     public ChemicalProcess(ChemicalProcessType type, int level, ChemicalBase... components)
     {
